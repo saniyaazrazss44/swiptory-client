@@ -59,6 +59,14 @@ const Home = () => {
     const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlideIndex(currentSlideIndex => (currentSlideIndex + 1) % storySlides.slides.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [storySlides]);
+
+    useEffect(() => {
         const handleSize = () => {
             if (window.innerWidth <= 768) {
                 setCustomStyles({
@@ -237,8 +245,8 @@ const Home = () => {
                             <div key={slideIndex} style={{ display: slideIndex === currentSlideIndex ? 'flex' : 'none', backgroundImage: `url(${slide.image})` }} className='storyModalContainer'>
                                 <div className='storyModalHeader'>
                                     <div className="status-bar" style={{ '--num-status-lines': storySlides.slides.length }}>
-                                        {[...Array(storySlides.slides.length)].map((_, lineIndex) => (
-                                            <div key={lineIndex} className="status-line" style={{ animationDelay: `${lineIndex * 5}s` }}></div>
+                                        {storySlides.slides.map((_, slideIndex) => (
+                                            <div key={slideIndex} className="status-line" style={{ '--animation-delay': `${(slideIndex * 5)}s` }}></div>
                                         ))}
                                     </div>
                                     <div className='btnStoryheader'>

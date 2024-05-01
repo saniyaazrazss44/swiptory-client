@@ -367,17 +367,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
-    animation: slideRight linear forwards;
+    background-color: #ffffff;
+    animation: turnWhiteAnimation 5s linear forwards;
+    animation-delay: var(--animation-delay);
 }
 
-@keyframes slideRight {
-    0% {
+@keyframes turnWhiteAnimation {
+    from {
         width: 0;
     }
 
-    100% {
+    to {
         width: 100%;
+        background: #ffffff;
     }
 }
 
