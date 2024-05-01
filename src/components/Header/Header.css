@@ -1,0 +1,63 @@
+.headerMain {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 3rem;
+    box-shadow: 0px 4px 15px 0px #00000026;
+}
+
+.headerMain h1 {
+    font-size: 1.8rem;
+}
+
+.headerAuth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userMenuContainer {
+    position: relative;
+}
+
+.userMenuOpenDetails {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    height: 150px;
+    margin-top: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.userLogoutBtn {
+    border-style: none;
+    border-radius: 20px;
+    background: #FF7373;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.userLogoutBtn:hover {
+    transform: scale(1.05);
+}
+
+.userNameText {
+    font-size: 1.1rem;
+}

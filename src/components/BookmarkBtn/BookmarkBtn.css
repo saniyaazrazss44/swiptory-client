@@ -1,0 +1,20 @@
+.bookmarkMain {
+    background: #FF7373;
+    color: #ffffff;
+    padding: 0.7rem 1.5rem;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.bookmarkMain:hover {
+    transform: scale(1.05);
+}
+
+.bookmarkMain h3 {
+    font-size: 1.1rem;
+}

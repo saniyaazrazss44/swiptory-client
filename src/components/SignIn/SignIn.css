@@ -1,0 +1,129 @@
+.signinMain {
+    background: #73ABFF;
+    padding: 0.7rem 1.5rem;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.signinMain:hover {
+    transform: scale(1.05);
+}
+
+.signinMain h3 {
+    font-size: 1.1rem;
+}
+
+.signinCloseBtn {
+    border-style: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.signinCloseBtn:hover {
+    transform: scale(1.2);
+}
+
+.signinPasswordImg {
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.signinCloseContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.signinTitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem;
+}
+
+.signinTitle h3 {
+    font-size: 1.4rem;
+}
+
+.signinLoginForm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'DMSansMedium';
+}
+
+.signinLoginForm label {
+    font-size: 1rem;
+}
+
+.signinLoginForm input {
+    font-size: 1rem;
+    border-style: none;
+    border: 1px solid #000000;
+    padding: 0.3rem 1rem;
+}
+
+.signinFormContainer {
+    width: 70%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.9rem;
+}
+
+.signinBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.btnLogin {
+    border-style: none;
+    background: #73ABFF;
+    font-size: 1.2rem;
+    color: #000000;
+    padding: 0.6rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btnLogin:hover {
+    transform: scale(1.1);
+}
+
+.inpPasswordDiv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.passwordShow {
+    position: absolute;
+    right: 0;
+    background: #ffffff;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding-left: 0.4rem;
+    margin-right: 0.4rem;
+}

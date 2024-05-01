@@ -1,0 +1,13 @@
+.editStoryMain {
+    background: #ffffff;
+    color: #000000;
+    padding: 0.5rem 0.5rem;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px 0px #00000040;
+    font-size: 0.8rem;
+}

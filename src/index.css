@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+@font-face {
+  font-family: 'DMSansRegular';
+  src: url('./pages/DMSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansMedium';
+  src: url('./pages/DMSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansLight';
+  src: url('./pages/DMSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansBold';
+  src: url('./pages/DMSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansBlack';
+  src: url('./pages/DMSans-Black.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansExtraBold';
+  src: url('./pages/DMSans-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'DMSansExtraLight';
+  src: url('./pages/DMSans-ExtraLight.ttf');
+}
+
+.dmsans-regular {
+  font-family: 'DMSansRegular';
+}
+
+.dmsans-light {
+  font-family: 'DMSansLight';
+}
+
+.dmsans-medium {
+  font-family: 'DMSansMedium';
+}
+
+.dmsans-bold {
+  font-family: 'DMSansBold';
+}
+
+.dmsans-black {
+  font-family: 'DMSansBlack';
+}
+
+.dmsans-extraBold {
+  font-family: 'DMSansExtraBold';
+}
+
+.dmsans-extraLight {
+  font-family: 'DMSansExtraLight';
+}

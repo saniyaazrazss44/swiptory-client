@@ -1,0 +1,129 @@
+.registerMain {
+    background: #FF7373;
+    padding: 0.7rem 1.5rem;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.registerMain:hover {
+    transform: scale(1.05);
+}
+
+.registerMain h3 {
+    font-size: 1.1rem;
+}
+
+.registerCloseBtn {
+    border-style: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.registerCloseBtn:hover {
+    transform: scale(1.2);
+}
+
+.registerPasswordImg {
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.registerCloseContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.registerTitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem;
+}
+
+.registerTitle h3 {
+    font-size: 1.4rem;
+}
+
+.regsiterLoginForm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'DMSansMedium';
+}
+
+.regsiterLoginForm label {
+    font-size: 1rem;
+}
+
+.regsiterLoginForm input {
+    font-size: 1rem;
+    border-style: none;
+    border: 1px solid #000000;
+    padding: 0.3rem 1rem;
+}
+
+.registerFormContainer {
+    width: 70%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.9rem;
+}
+
+.registerBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.btnRegister {
+    border-style: none;
+    background: #73ABFF;
+    font-size: 1.2rem;
+    color: #000000;
+    padding: 0.6rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btnRegister:hover {
+    transform: scale(1.1);
+}
+
+.inpPasswordDiv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.passwordShow {
+    position: absolute;
+    right: 0;
+    background: #ffffff;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding-left: 0.4rem;
+    margin-right: 0.4rem;
+}

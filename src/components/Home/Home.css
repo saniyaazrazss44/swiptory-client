@@ -1,0 +1,377 @@
+.filterByCategory {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 2.5rem 3rem;
+}
+
+.filterByCategory button {
+    border-style: none;
+    font-family: 'DMSansBlack';
+    font-size: 0.6rem;
+    padding: 2.5rem;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 180px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.filterByCategory .thisIsSelected {
+    border: 5px solid #00ACD2;
+}
+
+.allCategory {
+    position: relative;
+    background-image: url('../../assets/images/all-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.foodCategory {
+    position: relative;
+    background-image: url('../../assets/images/food-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.healthCategory {
+    position: relative;
+    background-image: url('../../assets/images/health-and-fitness-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.travelCategory {
+    position: relative;
+    background-image: url('../../assets/images/travel-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.moviesCategory {
+    position: relative;
+    background-image: url('../../assets/images/movie-icon.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.educationCategory {
+    position: relative;
+    background-image: url('../../assets/images/education-icon.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.allCategory::before,
+.foodCategory::before,
+.healthCategory::before,
+.travelCategory::before,
+.moviesCategory::before,
+.educationCategory::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 30px;
+}
+
+.allCategory h1,
+.foodCategory h1,
+.healthCategory h1,
+.travelCategory h1,
+.moviesCategory h1,
+.educationCategory h1 {
+    position: relative;
+    z-index: 2;
+}
+
+.allCategoriesList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 3rem;
+    gap: 2rem;
+}
+
+.storiesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.storiesContainer h6 {
+    font-size: 1rem;
+}
+
+.storiesContainer h1 {
+    font-size: 2rem;
+}
+
+.storiesImgAndBtnDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.storiesImg {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+}
+
+.imageView {
+    height: 450px;
+    border-radius: 9px;
+    position: relative;
+    /* background-image: url('../../assets/images/travel-icon.png'); */
+    background: #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    padding: 2rem 1rem;
+}
+
+.imageView::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 9px;
+}
+
+.imageView h5,
+.imageView p {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.imageText {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.imageText h5 {
+    font-size: 1.3rem;
+    font-family: 'DMSansBold';
+}
+
+.imageText p {
+    font-family: 'DMSansMedium';
+    font-size: 1rem;
+}
+
+.storiesImgAndEditDiv {
+    position: relative;
+}
+
+.storyEditBtn {
+    position: absolute;
+    bottom: -20px;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btnSeeMore {
+    background: #FF7373;
+    color: #ffffff;
+    padding: 0.7rem 1.5rem;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    font-size: 1rem;
+}
+
+.btnSeeMore:hover {
+    transform: scale(1.05);
+}
+
+.btnCloseStory,
+.btnShareStory,
+.btnBookmarkStory,
+.btnLikeStory,
+.btnSlideLeftControl,
+.btnSlideRightControl {
+    border-style: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.btnCloseStory:hover,
+.btnShareStory:hover,
+.btnBookmarkStory:hover,
+.btnLikeStory:hover,
+.btnSlideLeftControl:hover,
+.btnSlideRightControl:hover {
+    transform: scale(1.09);
+}
+
+.storyModalHeader {
+    width: 100%;
+    padding: 1rem;
+    background: #000000;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 30px 50px 0 rgba(0, 0, 0, 0.8);
+}
+
+.btnStoryheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btnStoryheader img {
+    display: flex;
+    align-items: center;
+}
+
+.storyModalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    background: #000000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.storyModalContainerMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storyModalFooter {
+    width: 50%;
+    padding: 1rem;
+    background: #000000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 -30px 50px 0 rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+}
+
+.storyTextContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.btnStoryFooter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+    padding-top: 0.5rem;
+}
+
+.btnStoryFooter img {
+    display: flex;
+    align-items: center;
+}
+
+.storyControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.status-bar {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.status-line {
+    width: calc(100% / var(--num-status-lines));
+    height: 3px;
+    background-color: #ccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    animation: slideRight linear forwards;
+}
+
+@keyframes slideRight {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
