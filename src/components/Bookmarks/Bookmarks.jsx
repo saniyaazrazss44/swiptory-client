@@ -57,14 +57,6 @@ const Bookmarks = () => {
     const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlideIndex(currentSlideIndex => (currentSlideIndex + 1) % storySlides.slides.length);
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [storySlides]);
-
-    useEffect(() => {
         const handleSize = () => {
             if (window.innerWidth <= 768) {
                 setCustomStyles({
