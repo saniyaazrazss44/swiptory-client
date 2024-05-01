@@ -54,7 +54,6 @@ const Bookmarks = () => {
     const [bookmarkStories, setBookmarkStories] = useState([])
     const [storySlides, setStorySlides] = useState([])
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-    const [storyId, setStoryId] = useState('662ff42a1ec4c3d990eea48a');
     const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
@@ -73,24 +72,22 @@ const Bookmarks = () => {
         fetchAllBookmarks()
     }, [])
 
-    useEffect(() => {
-
-        async function fetchStoryData() {
+    const fetchStoryData = async (storyId) => {
+        try {
             let storyPayload = {
                 storyId: storyId
             }
-            try {
-                const response = await fetchStoryDetails(storyPayload)
-                const responseData = response.data
-                setStorySlides(responseData)
-            } catch (error) {
-                console.log(error)
-            }
+            const response = await fetchStoryDetails(storyPayload)
+            const responseData = response.data
+            console.log("setStorySlides", responseData)
+            setStorySlides(responseData)
+        } catch (error) {
+            console.log(error)
         }
-        fetchStoryData()
-    }, [storyId])
+    }
 
-    function openSlideModal() {
+    const openSlideModal = (itemId) => {
+        fetchStoryData(itemId)
         setIsOpen(true);
     }
 
@@ -105,10 +102,6 @@ const Bookmarks = () => {
     const prevSlide = () => {
         setCurrentSlideIndex(currentSlideIndex === 0 ? storySlides.slides.length - 1 : currentSlideIndex - 1);
     };
-
-    if (!storySlides || !storySlides.slides || storySlides.slides.length === 0) {
-        return null;
-    }
 
     const handleShareClick = async (storyId) => {
         try {
@@ -137,6 +130,7 @@ const Bookmarks = () => {
             const response = await likeDislikeStory(payload)
             if (user_Id === response.userId) {
                 setLiked(true);
+                toastr.success(response.message)
             }
         } catch (error) {
             console.log(error)
@@ -184,7 +178,7 @@ const Bookmarks = () => {
                 </div>
 
                 <div className='storyModalContainerMain'>
-                    {storySlides.slides.map((slide, slideIndex) => {
+                    {storySlides?.slides?.map((slide, slideIndex) => {
                         return (
                             <div key={slideIndex} style={{ display: slideIndex === currentSlideIndex ? 'flex' : 'none', backgroundImage: `url(${slide.image})` }} className='storyModalContainer'>
                                 <div className='storyModalHeader'>
@@ -197,7 +191,7 @@ const Bookmarks = () => {
                                         <button className='btnCloseStory' onClick={closeSlideModal}>
                                             <img src={storyCloseImg} alt="close" />
                                         </button>
-                                        <button className='btnShareStory' onClick={() => handleShareClick('662ff42a1ec4c3d990eea48a')}>
+                                        <button className='btnShareStory' onClick={() => handleShareClick(storySlides._id)}>
                                             <img src={storyShareImg} alt="share" />
                                         </button>
                                     </div>
@@ -209,7 +203,7 @@ const Bookmarks = () => {
                                     </div>
                                     <div className='btnStoryFooter'>
                                         {user_Id ? (
-                                            <button className='btnBookmarkStory' onClick={() => handleAddRemoveBookmarkClick('662ff42a1ec4c3d990eea48a')}>
+                                            <button className='btnBookmarkStory' onClick={() => handleAddRemoveBookmarkClick(storySlides._id)}>
                                                 {bookmarked ? (
                                                     <img src={bookmarkStoryBlueIcon} alt="bookmark" />
                                                 ) : (
@@ -221,7 +215,7 @@ const Bookmarks = () => {
                                         )}
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                             {user_Id ? (
-                                                <button className='btnLikeStory' onClick={() => handleLikeDisLikeClick('662ff42a1ec4c3d990eea48a')}>
+                                                <button className='btnLikeStory' onClick={() => handleLikeDisLikeClick(storySlides._id)}>
                                                     {liked ? (
                                                         <img src={likeStoryRedIcon} alt="like" />
                                                     ) : (
@@ -232,7 +226,7 @@ const Bookmarks = () => {
                                                 <SignInModalPage />
                                             )}
                                             <div>
-                                                <LikesCount />
+                                                <LikesCount storyId={storySlides._id}/>
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +249,7 @@ const Bookmarks = () => {
                                 {bookmarkStories.slice(0, visibleItems).map((bookmark, index) => (
                                     <div key={index} className='storiesImgAndEditDiv'>
                                         {bookmark.slides.length > 0 && (
-                                            <div onClick={openSlideModal} className='imageView' style={{ backgroundImage: `url(${bookmark.slides[0].image})` }}>
+                                            <div onClick={() => openSlideModal(bookmark._id)} className='imageView' style={{ backgroundImage: `url(${bookmark.slides[0].image})` }}>
                                                 <div className='imageText'>
                                                     <h5>{bookmark.slides[0].heading}</h5>
                                                     <p>{bookmark.slides[0].description}</p>

@@ -56,7 +56,6 @@ const Home = () => {
     const [storySlides, setStorySlides] = useState([])
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [storyId, setStoryId] = useState('662ff42a1ec4c3d990eea48a');
     const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
@@ -94,30 +93,28 @@ const Home = () => {
         fetchAllStories();
     }, [selectedCategory]);
 
-    useEffect(() => {
-
-        async function fetchStoryData() {
+    const fetchStoryData = async (storyId) => {
+        try {
             let storyPayload = {
                 storyId: storyId
             }
-            try {
-                const response = await fetchStoryDetails(storyPayload)
-                const responseData = response.data
-                setStorySlides(responseData)
-            } catch (error) {
-                console.log(error)
-            }
+            const response = await fetchStoryDetails(storyPayload)
+            const responseData = response.data
+            console.log("setStorySlides", responseData)
+            setStorySlides(responseData)
+        } catch (error) {
+            console.log(error)
         }
-        fetchStoryData()
-    }, [storyId])
+    }
+
+    const openSlideModal = (itemId) => {
+        fetchStoryData(itemId)
+        setIsOpen(true);
+    }
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
     };
-
-    function openSlideModal() {
-        setIsOpen(true);
-    }
 
     function closeSlideModal() {
         setIsOpen(false);
@@ -130,10 +127,6 @@ const Home = () => {
     const prevSlide = () => {
         setCurrentSlideIndex(currentSlideIndex === 0 ? storySlides.slides.length - 1 : currentSlideIndex - 1);
     };
-
-    if (!storySlides || !storySlides.slides || storySlides.slides.length === 0) {
-        return null;
-    }
 
     const handleShareClick = async (storyId) => {
         try {
@@ -162,6 +155,7 @@ const Home = () => {
             const response = await likeDislikeStory(payload)
             if (user_Id === response.userId) {
                 setLiked(true);
+                toastr.success(response.message)
             }
         } catch (error) {
             console.log(error)
@@ -209,7 +203,7 @@ const Home = () => {
                 </div>
 
                 <div className='storyModalContainerMain'>
-                    {storySlides.slides.map((slide, slideIndex) => {
+                    {storySlides?.slides?.map((slide, slideIndex) => {
                         return (
                             <div key={slideIndex} style={{ display: slideIndex === currentSlideIndex ? 'flex' : 'none', backgroundImage: `url(${slide.image})` }} className='storyModalContainer'>
                                 <div className='storyModalHeader'>
@@ -222,7 +216,7 @@ const Home = () => {
                                         <button className='btnCloseStory' onClick={closeSlideModal}>
                                             <img src={storyCloseImg} alt="close" />
                                         </button>
-                                        <button className='btnShareStory' onClick={() => handleShareClick('662ff42a1ec4c3d990eea48a')}>
+                                        <button className='btnShareStory' onClick={() => handleShareClick(storySlides._id)}>
                                             <img src={storyShareImg} alt="share" />
                                         </button>
                                     </div>
@@ -234,7 +228,7 @@ const Home = () => {
                                     </div>
                                     <div className='btnStoryFooter'>
                                         {user_Id ? (
-                                            <button className='btnBookmarkStory' onClick={() => handleAddRemoveBookmarkClick('662ff42a1ec4c3d990eea48a')}>
+                                            <button className='btnBookmarkStory' onClick={() => handleAddRemoveBookmarkClick(storySlides._id)}>
                                                 {bookmarked ? (
                                                     <img src={bookmarkStoryBlueIcon} alt="bookmark" />
                                                 ) : (
@@ -246,7 +240,7 @@ const Home = () => {
                                         )}
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                             {user_Id ? (
-                                                <button className='btnLikeStory' onClick={() => handleLikeDisLikeClick('662ff42a1ec4c3d990eea48a')}>
+                                                <button className='btnLikeStory' onClick={() => handleLikeDisLikeClick(storySlides._id)}>
                                                     {liked ? (
                                                         <img src={likeStoryRedIcon} alt="like" />
                                                     ) : (
@@ -257,7 +251,7 @@ const Home = () => {
                                                 <SignInModalPage />
                                             )}
                                             <div>
-                                                <LikesCount />
+                                                <LikesCount storyId={storySlides._id} />
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +310,7 @@ const Home = () => {
                                             ) : (
                                                 <div key={index}>
                                                     {story.slides.length > 0 && (
-                                                        <div onClick={openSlideModal} className='imageView' style={{ backgroundImage: `url(${story.slides[0].image})` }} key={story.slides[0]._id}>
+                                                        <div onClick={() => openSlideModal(story._id)} className='imageView' style={{ backgroundImage: `url(${story.slides[0].image})` }} key={story.slides[0]._id}>
                                                             <div className='imageText'>
                                                                 <h5>{story.slides[0].heading}</h5>
                                                                 <p>{story.slides[0].description}</p>
@@ -342,7 +336,7 @@ const Home = () => {
                         </div>
                     )}
 
-                    {stories.map((story, index) => (
+                    {stories?.map((story, index) => (
                         <div className='storiesContainer' key={index}>
                             <h1 style={{ paddingTop: '2rem' }} className='dmsans-bold'>{story.category}</h1>
                             {story.stories.length === 0 ? (
@@ -350,11 +344,11 @@ const Home = () => {
                             ) : (
                                 <div className='storiesImgAndBtnDiv'>
                                     <div className='storiesImg'>
-                                        {story.stories.slice(0, visibleItems).map((item, index) => (
+                                        {story?.stories?.slice(0, visibleItems).map((item, index) => (
 
                                             <div key={index} className='storiesImgAndEditDiv'>
                                                 {item.slides.length > 0 && (
-                                                    <div onClick={openSlideModal} className='imageView' style={{ backgroundImage: `url(${item.slides[0].image})` }} key={item.slides[0].id}>
+                                                    <div onClick={() => openSlideModal(item._id)} className='imageView' style={{ backgroundImage: `url(${item.slides[0].image})` }} key={item.slides[0].id}>
                                                         <div className='imageText'>
                                                             <h5>{item.slides[0].heading}</h5>
                                                             <p>{item.slides[0].description}</p>

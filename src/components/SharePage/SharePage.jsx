@@ -64,7 +64,6 @@ const SharePage = () => {
             try {
                 const response = await viewStory(storyPayload)
                 const responseData = response.story
-                console.log(responseData)
                 setStorySlides(responseData)
             } catch (error) {
                 console.log(error)
@@ -119,6 +118,7 @@ const SharePage = () => {
             console.log(response.userId)
             if (user_Id === response.userId) {
                 setLiked(true);
+                toastr.success(response.message)
             }
         } catch (error) {
             console.log(error)
@@ -210,7 +210,7 @@ const SharePage = () => {
                                                 <SignInModalPage />
                                             )}
                                             <div>
-                                                <LikesCount />
+                                                <LikesCount storyId={storyId}/>
                                             </div>
                                         </div>
                                     </div>

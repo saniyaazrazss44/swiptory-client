@@ -6,7 +6,6 @@ import EditStoryIcon from '../../assets/icons/edit-icon.png'
 import toastr from 'toastr';
 import 'toastr/build/toastr.css';
 import { editStory } from '../../apis/storyApis';
-import { fetchStory } from '../../apis/storyApis';
 import './EditStory.css'
 import '../AddStory/AddStory.css'
 

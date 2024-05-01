@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { viewLikeCount } from '../../apis/likesApis';
 
-const LikesCount = () => {
+const LikesCount = ({ storyId }) => {
 
     const [likesCount, setLikesCount] = useState(0);
 
     useEffect(() => {
         async function fetchTotalLikes() {
             let payload = {
-                storyId: '662feb3c1ec4c3d990ee955d'
+                storyId: storyId
             }
             try {
                 const response = await viewLikeCount(payload)
