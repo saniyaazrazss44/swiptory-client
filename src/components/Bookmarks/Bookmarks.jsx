@@ -57,6 +57,35 @@ const Bookmarks = () => {
     const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
+        const handleSize = () => {
+            if (window.innerWidth <= 768) {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '100%',
+                        height: '100vh'
+                    }
+                })
+            } else {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '50%',
+                        height: '90%'
+                    }
+                })
+            }
+
+        }
+        window.addEventListener('resize', handleSize);
+        handleSize()
+
+        return () => {
+            window.removeEventListener('resize', handleSize);
+        };
+    }, [])
+
+    useEffect(() => {
         const fetchAllBookmarks = async () => {
             try {
                 let payload = {

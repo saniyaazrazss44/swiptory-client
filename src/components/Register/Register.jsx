@@ -36,13 +36,32 @@ const Register = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
+    useEffect(() => {
+        const handleSize = () => {
+            if (window.innerWidth <= 768) {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '80%'
+                    }
+                })
+            } else {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '45%'
+                    }
+                })
+            }
 
-    //     if (token) {
-    //         window.location.href = '/';
-    //     }
-    // }, []);
+        }
+        window.addEventListener('resize', handleSize);
+        handleSize()
+
+        return () => {
+            window.removeEventListener('resize', handleSize);
+        };
+    }, [])
 
     const handlePasswordClick = () => {
         setShowPassword(!showPassword)
@@ -108,7 +127,7 @@ const Register = () => {
 
                 <div className='registerBody'>
                     <div className='registerTitle'>
-                        <h3 className='dmsans-bold'>Register to SwipTory</h3>
+                        <h3 className='dmsans-bold' style={{ textAlign: 'center' }}>Register to SwipTory</h3>
                     </div>
 
                     <div className='registerFormContainer'>

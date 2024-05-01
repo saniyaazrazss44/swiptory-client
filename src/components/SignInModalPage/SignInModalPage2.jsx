@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../SignIn/SignIn.css'
 import '../Home/Home.css'
 import Modal from 'react-modal';
-import likeStoryIcon from '../../assets/icons/like-icon.png'
 import CloseIcon from '../../assets/icons/modal-close-icon.jpg'
 import PasswordShow from '../../assets/icons/password-eye-open.png'
 import PasswordHide from '../../assets/icons/password-eye-close.png'
@@ -38,6 +37,33 @@ const SignInModalPage2 = () => {
     const [errorMsg, setErrorMsg] = useState('')
     const [modalIsOpen, setIsOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        const handleSize = () => {
+            if (window.innerWidth <= 768) {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '80%'
+                    }
+                })
+            } else {
+                setCustomStyles({
+                    ...customStyles, content: {
+                        ...customStyles.content,
+                        width: '45%'
+                    }
+                })
+            }
+
+        }
+        window.addEventListener('resize', handleSize);
+        handleSize()
+
+        return () => {
+            window.removeEventListener('resize', handleSize);
+        };
+    }, [])
 
     const handlePasswordClick = () => {
         setShowPassword(!showPassword)
@@ -104,7 +130,7 @@ const SignInModalPage2 = () => {
 
                 <div className='signinBody'>
                     <div className='signinTitle'>
-                        <h3 className='dmsans-bold'>Login to SwipTory</h3>
+                        <h3 className='dmsans-bold' style={{ textAlign: 'center' }}>Login to SwipTory</h3>
                     </div>
 
                     <div className='signinFormContainer'>
