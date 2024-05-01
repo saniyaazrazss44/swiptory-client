@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = `http://localhost:3003/api/like`
+const backendUrl = `https://swiptory-server-95r3.onrender.com/api/like`
 
 export const likeDislikeStory = async ({ userId, storyId }) => {
     try {

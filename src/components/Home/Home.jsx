@@ -112,7 +112,6 @@ const Home = () => {
     }, [storyId])
 
     const handleCategoryClick = (category) => {
-        
         setSelectedCategory(category);
     };
 
@@ -312,7 +311,7 @@ const Home = () => {
                                 <div className='storiesImg'>
                                     {yourStories.slice(0, visibleItems).map((story, index) => (
                                         <div className='storiesImgAndEditDiv'>
-                                            {story.length === 0 ? (
+                                            {yourStories.length === 0 ? (
                                                 <h6 className='dmsans-medium'>No stories Available</h6>
                                             ) : (
                                                 <div key={index}>

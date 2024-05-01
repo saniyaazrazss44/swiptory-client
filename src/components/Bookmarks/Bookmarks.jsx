@@ -55,6 +55,7 @@ const Bookmarks = () => {
     const [storySlides, setStorySlides] = useState([])
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [storyId, setStoryId] = useState('662ff42a1ec4c3d990eea48a');
+    const [visibleItems, setVisibleItems] = useState(4);
 
     useEffect(() => {
         const fetchAllBookmarks = async () => {
@@ -158,6 +159,10 @@ const Bookmarks = () => {
         }
     }
 
+    const handleSeeMore = () => {
+        setVisibleItems(prev => prev + 4);
+    };
+
     return (
         <div>
             <Modal
@@ -247,7 +252,7 @@ const Bookmarks = () => {
                         <h1 className='dmsans-bold'>Your Bookmarks</h1>
                         <div className='storiesImgAndBtnDiv' >
                             <div className='storiesImg' >
-                                {bookmarkStories.map((bookmark, index) => (
+                                {bookmarkStories.slice(0, visibleItems).map((bookmark, index) => (
                                     <div key={index} className='storiesImgAndEditDiv'>
                                         {bookmark.slides.length > 0 && (
                                             <div onClick={openSlideModal} className='imageView' style={{ backgroundImage: `url(${bookmark.slides[0].image})` }}>
@@ -267,7 +272,9 @@ const Bookmarks = () => {
                                     </div>
                                 ))}
                             </div>
-                            <button className='btnSeeMore dmsans-black'>See more</button>
+                            {bookmarkStories.length > visibleItems && (
+                                <button className='btnSeeMore dmsans-black' onClick={handleSeeMore}>See more</button>
+                            )}
                         </div>
                     </div>
                 )}

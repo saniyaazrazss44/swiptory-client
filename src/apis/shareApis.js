@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = `http://localhost:3003/api/share`
+const backendUrl = `https://swiptory-server-95r3.onrender.com/api/share`
 
 export const shareStory = async ({ storyId }) => {
     try {
